@@ -10,7 +10,11 @@ pandas = "*"
 torch = "*"
 torchvision = "*"
 torchaudio = "*"
+matplotlib = "*"
+seaborn = "*"
+scikit-learn = "*"
 jupyter = "*"
+tqdm = "*"
 
 [dev-packages]
 
