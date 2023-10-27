@@ -3,6 +3,13 @@ import torch.nn as nn
 
 class SimpleRegressionNet(nn.Module):
     def __init__(self, n_input, n_output, n_hidden, n_layer):
+        """
+        creates a variable net with linear layers in sequence with dropout and ReLU
+        :param n_input: input layer size
+        :param n_output: output layer size
+        :param n_hidden: hidden layer size
+        :param n_layer: number of hidden layers
+        """
         super().__init__()
 
         self.activation = nn.ReLU()  # Activation function

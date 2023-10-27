@@ -6,12 +6,10 @@ import torch
 from tqdm import tqdm
 
 
-def train(x_train_tensor, y_train_tensor):
-    train_tensor = torch.utils.data.TensorDataset(x_train_tensor, y_train_tensor)
+def train(X, Y):
+    train_tensor = torch.utils.data.TensorDataset(X, Y)
     batch_size = 64
     train_loader = torch.utils.data.DataLoader(train_tensor, batch_size=batch_size, shuffle=True)
-
-
 
     criterion = torch.nn.MSELoss()
     optimizer = torch.optim.AdamW(net.parameters(), lr=0.0001, weight_decay=0.0001)
@@ -63,11 +61,10 @@ if __name__ == '__main__':
     X_train_prepped = pipeline.fit_transform(X)
     X_test_prepped = pipeline.transform(df_test)
 
-    #transform to tensor
+    # transform to tensor
     x_train_tensor = torch.tensor(X_train_prepped).float()
     y_train_tensor = torch.tensor(Y).float()
     x_test_tensor = torch.tensor(X_test_prepped).float()
-
 
     torch.manual_seed(0)
     torch.cuda.manual_seed(0)
@@ -84,8 +81,8 @@ if __name__ == '__main__':
     y_train_tensor = y_train_tensor.to(device)
     x_test_tensor = x_test_tensor.to(device)
 
-    #net = train(x_train_tensor, y_train_tensor)
-    net.load_state_dict(torch.load("model.pkl"))
+    net = train(x_train_tensor, y_train_tensor)
+    # net.load_state_dict(torch.load("model.pkl"))
 
     predictions = []
     for i in range(50):

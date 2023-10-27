@@ -33,6 +33,11 @@ class Processing(object):
 
     @staticmethod
     def getPipeline(df):
+        """
+        returns preprocessing Pipeline
+        :param df: dataframe
+        :return:
+        """
         # in numerical features replace missing values with median and standardize values
         numerical_transformer = Pipeline(steps=[
             ('imputer', SimpleImputer(strategy="median")),

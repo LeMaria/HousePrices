@@ -1,7 +1,6 @@
 from pathlib import Path
 
-PROJECTROOT = Path(r"E:\workspace\Coding\HousePrices")
-
+PROJECTROOT = Path.cwd()
 
 def getProjectRoot():
     return PROJECTROOT
